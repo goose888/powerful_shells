@@ -1,0 +1,59 @@
+&isamcfg
+
+        runname = 'Global_dveg_SG3'
+
+        bgp_bgc_mode = 3
+        restart = .true.
+        run_type = 2
+        CN_RATIO = 0
+        initial_bgp_in_datadir = 'initial_bgp/bgp.isam_initial.dveg.gcp.nc'
+        initial_bgc_in_datadir = 'initial_bgc/bgc.isam_initial.dveg.gcp.nc'
+
+        repeat_cycles = 1
+        start_time = 2015
+        run_time = 2
+
+        offline_clim_data = 'CRU_NCEP'
+        luc_data = 1
+
+        clim_disturb= .true.
+        clim_random= .false.
+        co2_disturb= .true.
+        luc_disturb= .true.
+        n_disturb= .true.
+        fna_func = .true.
+
+        region_mask = 1,1,1,1,1,1,1,1,1,0,0
+
+        datadir   = 'data'
+        outputdir = 'output'
+
+        single_point = .false.
+        single_x = 431
+        single_y = 308
+        generate_site_met_nc_from_global = .false.
+
+        single_pft = .false.
+        single_pft_num = -999
+        use_site_met = .false.
+        sitename   = 'S03AK-240-015'
+        site_ref_ht = 30
+        site_met_option = 'CRU_NCEP'
+        site_met_timezone = 'local'
+
+        dyn_veg         = .true.
+        dyn_soc         = .false.
+        fixed_harvest   = .false.
+        fixed_planttime = .false.
+        crop_mode       = 'generic'
+
+        hist_freq_yr = 1
+        save_hist_yr = .true.
+        output_trendy = .true.
+        save_hist_mon = .false.
+        save_hist_bgp_to_bgc = .false.
+
+        restart_freq_yr = 5
+
+        isam_deltim = 3600
+/
