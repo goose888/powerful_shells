@@ -5,3 +5,7 @@ getent group cades-ccsi
 
 # Print all machine related info
 uname -a
+
+# Print user info
+id sshu3
+
