@@ -1,0 +1,36 @@
+suplphos = 'ALL'
+suplnitro = 'ALL'
+finidat = ''
+fates_paramfile='/global/homes/s/sshu3/fates_params_default_12pft_api15.c211117.nc'
+flanduse_timeseries = '/global/homes/s/sshu3/E3SM/cime/scripts/landuse.timeseries_4x5_hist_simyr1850-2015.testluc_biomass_harvest.nc'
+do_harvest = .false.
+use_fates_nocomp = .false.
+use_fates_fixed_biogeog = .true.
+fsurdat = '/global/homes/s/sshu3/E3SM/cime/scripts/surfdata_4x5_simyr2000_sapft4.c220423.nc'
+check_dynpft_consistency = .false.
+check_finidat_fsurdat_consistency = .false.
+check_finidat_year_consistency = .false.
+!hist_empty_htapes = .true.
+!hist_avgflag_pertape = 'I'
+!hist_nhtfrq = -24
+!hist_mfilt = 30
+!hist_fincl1 = 'FATES_VEGC','FATES_PATCHAREA_AP','FATES_CANOPYAREA_AP','FATES_BASALAREA_SZ','FATES_NPLANT_CANOPY_SZ','FATES_DDBH_CANOPY_SZAP',              'FATES_DDBH_USTORY_SZAP','FATES_MORTALITY_CANOPY_SZAP','FATES_MORTALITY_USTORY_SZAP','FATES_VEGC_SZPF','FATES_SECONDARY_FOREST_FRACTION','FATES_SECONDARY_FOREST_VEGC','FATES_HARVEST_CARBON_FLUX','HRV_DEADSTEMC_TO_PROD10C','HRV_DEADSTEMC_TO_PROD100C','PROD10C','PROD100C','HARVEST_DEBT','HARVEST_DEBT_SEC'
+
+suplphos = 'ALL'
+suplnitro = 'ALL'
+finidat = ''
+fates_paramfile='/global/homes/s/sshu3/fates_params_default_12pft_api15.c211117.nc'
+flanduse_timeseries = '/global/homes/s/sshu3/E3SM/cime/scripts/landuse.timeseries_4x5_hist_simyr1850-2015.testluc_biomass_harvest.nc'
+do_harvest = .false.
+use_fates_nocomp = .false.
+use_fates_fixed_biogeog = .true.
+fsurdat = '/global/homes/s/sshu3/E3SM/cime/scripts/surfdata_4x5_simyr2000_sapft4.c220423.nc'
+check_dynpft_consistency = .false.
+check_finidat_fsurdat_consistency = .false.
+check_finidat_year_consistency = .false.
+!hist_empty_htapes = .true.
+!hist_avgflag_pertape = 'I'
+!hist_nhtfrq = -24
+!hist_mfilt = 30
+!hist_fincl1 = 'FATES_VEGC','FATES_PATCHAREA_AP','FATES_CANOPYAREA_AP','FATES_BASALAREA_SZ','FATES_NPLANT_CANOPY_SZ','FATES_DDBH_CANOPY_SZAP',              'FATES_DDBH_USTORY_SZAP','FATES_MORTALITY_CANOPY_SZAP','FATES_MORTALITY_USTORY_SZAP','FATES_VEGC_SZPF','FATES_SECONDARY_FOREST_FRACTION','FATES_SECONDARY_FOREST_VEGC','FATES_HARVEST_CARBON_FLUX','HRV_DEADSTEMC_TO_PROD10C','HRV_DEADSTEMC_TO_PROD100C','PROD10C','PROD100C','HARVEST_DEBT','HARVEST_DEBT_SEC'
+
