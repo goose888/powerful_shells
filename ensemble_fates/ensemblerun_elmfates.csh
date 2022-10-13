@@ -10,14 +10,21 @@
 # setup: compile each case and submit job. good for multiple sites simulations.
 # runcases: skip compilation by copying pre-compiled e3sm case. good for single
 # site sensitivity test
+# Currently only support Cori and Lawrencium
 #----------------------------------------------------------------------------------
 
 set setup=true
+set cori=false
 set runcases=false
 set postprocessing=false
 
-set model_dir='/global/homes/s/sshu3/E3SM/cime/scripts'
-set case_dir='/global/cscratch1/sd/sshu3/Runs/FATES_ensemble'
+if($cori == 'true') then
+   set model_dir='/global/homes/s/sshu3/E3SM/cime/scripts'
+   set case_dir='/global/cscratch1/sd/sshu3/Runs/FATES_ensemble'
+else
+   set model_dir='/global/home/users/shijie/E3SM/cime/scripts'
+   set case_dir='/global/scratch/users/shijie/Runs/FATES_ensemble'
+endif
 set siteinfo='site_info.csv'
 
 #----------------------------------------------------------------------------------
@@ -50,14 +57,25 @@ if($setup == 'true') then
       # Right now I shall avoid the land surface data generation and put it as one 
       # default template
       #----------------------------------------------------------------------------------
-      set starttime='1850-01-01'
-      set runtime=110
-      set CASENAME=$lines[$j]
-      set surf_dir='/global/homes/s/sshu3/E3SM/cime/scripts'
-      set surf_fname='surfdata_4x5_simyr2000_SA-PFT4.c221012.nc'
-      set dom_dir='/global/homes/s/sshu3/E3SM/cime/scripts'
-      set dom_fname='domain.lnd.fv4x5_gx3v7_SA-PFT4.c221012.nc'
-      set lucdata='/global/homes/s/sshu3/E3SM/cime/scripts/landuse.timeseries_4x5_hist_simyr1850-2015.testluc_biomass_harvest.nc'
+      if($cori == 'true') then
+        set starttime='1850-01-01'
+        set runtime=110
+        set CASENAME=$lines[$j]
+        set surf_dir='/global/homes/s/sshu3/E3SM/cime/scripts'
+        set surf_fname='surfdata_4x5_simyr2000_SA-PFT4.c221012.nc'
+        set dom_dir='/global/homes/s/sshu3/E3SM/cime/scripts'
+        set dom_fname='domain.lnd.fv4x5_gx3v7_SA-PFT4.c221012.nc'
+        set lucdata='/global/homes/s/sshu3/E3SM/cime/scripts/landuse.timeseries_4x5_hist_simyr1850-2015.testluc_biomass_harvest.nc'
+      else
+        set starttime='1850-01-01'
+        set runtime=110
+        set CASENAME=$lines[$j]
+        set surf_dir='/global/home/users/shijie/E3SM/cime/scripts'
+        set surf_fname='surfdata_4x5_simyr2000_SA-PFT4.c221012.nc'
+        set dom_dir='/global/home/users/shijie/E3SM/cime/scripts'
+        set dom_fname='domain.lnd.fv4x5_gx3v7_SA-PFT4.c221012.nc'
+        set lucdata='/global/home/users/shijie/E3SM/cime/scripts/landuse.timeseries_4x5_hist_simyr1850-2015.testluc_biomass_harvest.nc'
+      endif
       #set fates_param='/global/homes/s/sshu3/fates_params_default_12pft_api15.c211117.nc'
       echo $CASENAME
       set lat=`awk -F , -v casename=$CASENAME '$1==casename { print $3}' $siteinfo`
@@ -70,12 +88,13 @@ if($setup == 'true') then
       #----------------------------------------------------------------------------------
       # Compile E3SM executable program for each ensemble member
       #----------------------------------------------------------------------------------
-      ./create_site_elm-fates.sh ${model_dir} ${case_dir} ${CASENAME} ${surf_dir} ${surf_fname} ${dom_dir} ${dom_fname} ${lucdata} ${fates_param} ${starttime} ${runtime}
-
-      #----------------------------------------------------------------------------------
-      # Job submission
-      #----------------------------------------------------------------------------------
-      sbatch --time 24:00:00 -q premium --account m2467 ${case_dir}/${CASENAME}/.case.run --resubmit
+      if($cori == 'true') then
+         ./create_site_elm-fates.sh ${model_dir} ${case_dir} ${CASENAME} ${surf_dir} ${surf_fname} ${dom_dir} ${dom_fname} ${lucdata} ${fates_param} ${starttime} ${runtime}
+         sbatch --time 24:00:00 -q premium --account m2467 ${case_dir}/${CASENAME}/.case.run --resubmit
+      else
+         ./create_site_elm-fates_lrc.sh ${model_dir} ${case_dir} ${CASENAME} ${surf_dir} ${surf_fname} ${dom_dir} ${dom_fname} ${lucdata} ${fates_param} ${starttime} ${runtime}
+         sbatch --time 12:00:00 -p lr3 --account ac_acme ${case_dir}/${CASENAME}/.case.run --resubmit
+      endif
 
       #----------------------------------------------------------------------------------
       # Go back to upper level
