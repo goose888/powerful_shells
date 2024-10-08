@@ -7,3 +7,4 @@ Personal arsenal of useful shell scripts
 5. ensemble_fates: Submit ensemble runs to sbatch specifically for ELM-FATES model.
 6. AFM_2015: R codes to make plots in El-Masri et al., 2015
 7. 01_deepLearning: Codes to introduce deep learning.
+8. R_study: A collection of R code examples.
