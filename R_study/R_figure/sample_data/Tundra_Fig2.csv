@@ -1,0 +1,19 @@
+Soil depth,Cumulative root fraction,class
+0,0,Measured
+5,0.622,Measured
+10,0.85,Measured
+15,0.936,Measured
+20,0.99,Measured
+25,0.998,Measured
+0,0,Modeled Dynamic
+5,0.537508165,Modeled Dynamic
+10,0.787480429,Modeled Dynamic
+15,0.941031872,Modeled Dynamic
+30,1,Modeled Dynamic
+0,0,Modeled Static
+5,0.140469233,Modeled Static
+10,0.504077572,Modeled Static
+15,0.831609229,Modeled Static
+30,0.955164287,Modeled Static
+50,0.988536602,Modeled Static
+82,0.997039279,Modeled Static
